@@ -94,8 +94,8 @@ app.get("/device/:id/hourly", async (req, res) => {
 
     const data = snapshot.docs.map(doc => doc.data());
 
-    if (data.length < 45) {
-      return res.status(400).json({ message: "Not enough data for hourly average (requires ≥ 45 points)" });
+    if (data.length < 90) {
+      return res.status(400).json({ message: "Not enough data for hourly average (requires 75% data)" });
     }
 
     const sum = { pm25: 0, pm10: 0, temperature: 0, humidity: 0 };
